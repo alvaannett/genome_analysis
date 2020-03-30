@@ -9,6 +9,7 @@
 
 #Load modules 
 module load bioinfo-tools 
+module load canu
 
 #-------- run canu ---------------------------- 
 
