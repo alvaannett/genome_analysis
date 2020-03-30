@@ -11,13 +11,18 @@
 module load bioinfo-tools 
 
 #-------- run canu ---------------------------- 
+
 # -p prefix filenames 
 # -d dir to run in
 # -pacbio-raw specifies the data type 
-# genomeSize needs to be specified 
-# stopOnReadQuality mentioned in the student manual 
+# genomeSize needs to be specified (taken from article) 
+# stopOnReadQuality mentioned in the student manual
+
 canu \
- -p L.Ferr -d 01_assembly \
- -pacbio-raw data/DNA_raw_data/ERR2028?.fastq.gz \
- genomeSize= \
- stopOnReadQuality=false 
+ -p WGSi_assembly \
+ -d 01_assembly \
+ genomeSize=2.6m \
+ stopOnReadQuality=false \
+ -pacbio-raw data/DNA_raw_data/ERR2028?.fastq.gz 
+
+#----------------------------------------------
