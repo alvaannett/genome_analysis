@@ -18,7 +18,7 @@ module load quast/4.5.4
 
 
 quast.py \
- -o 02_quality_quast \
+ -o 02_quality_quast_out \
  -R /domus/h1/alvaa/private/data/reference/OBMB01.fasta \
  -t 2 \
  /domus/h1/alvaa/private/WGS/01_assembly_out/WGS_assembly.contigs.fasta 
