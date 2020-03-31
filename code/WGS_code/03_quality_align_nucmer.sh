@@ -19,8 +19,7 @@ module load MUMmer/4.0.0beta2
 # contigs 
 
 nucmer \
- -p=align_nucmer \
- --delta=03_align_quality_mummer \
+ --prefix=03_align_quality_nucmer_out \
  --threads=2 \
  /domus/h1/alvaa/private/data/reference/OBMB01.fasta \
  /domus/h1/alvaa/private/WGS/01_assembly_out/WGS_assembly.contigs.fasta 
