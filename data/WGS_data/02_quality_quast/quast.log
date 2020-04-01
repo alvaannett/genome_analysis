@@ -1,0 +1,114 @@
+/sw/bioinfo/quast/4.5.4/rackham/bin/quast.py -o 02_quality_quast_out -R /domus/h1/alvaa/private/data/reference/OBMB01.fasta -t 2 /domus/h1/alvaa/private/WGS/01_assembly_out/WGS_assembly.contigs.fasta
+
+Version: 4.5.4
+
+System information:
+  OS: Linux-3.10.0-1062.12.1.el7.x86_64-x86_64-with-centos-7.7.1908-Core (linux_64)
+  Python version: 2.7.6
+  CPUs number: 20
+
+Started: 2020-03-31 13:17:42
+
+Logging to /domus/h1/alvaa/private/WGS/02_quality_quast_out/quast.log
+
+CWD: /domus/h1/alvaa/private/WGS
+Main parameters: 
+  Threads: 2, minimum contig length: 500, ambiguity: one, threshold for extensive misassembly size: 1000
+
+WARNING: Can't draw plots: python-matplotlib is missing or corrupted.
+
+Reference:
+  /domus/h1/alvaa/private/data/reference/OBMB01.fasta ==> OBMB01
+
+Contigs:
+  Pre-processing...
+  /domus/h1/alvaa/private/WGS/01_assembly_out/WGS_assembly.contigs.fasta ==> WGS_assembly.contigs
+
+2020-03-31 13:17:44
+Running Basic statistics processor...
+  Reference genome:
+    OBMB01.fasta, length = 2610531, num fragments = 2, GC % = 54.14
+  Contig files: 
+    WGS_assembly.contigs
+  Calculating N50 and L50...
+    WGS_assembly.contigs, N50 = 2563357, L50 = 1, Total length = 2636043, GC % = 54.06, # N's per 100 kbp =  0.00
+Done.
+
+2020-03-31 13:17:44
+Running Contig analyzer...
+  WGS_assembly.contigs
+  Logging to files /domus/h1/alvaa/private/WGS/02_quality_quast_out/contigs_reports/contigs_report_WGS_assembly-contigs.stdout and contigs_report_WGS_assembly-contigs.stderr...
+  Aligning contigs to the reference
+  /sw/bioinfo/quast/4.5.4/rackham/lib/python2.7/site-packages/quast_libs/MUMmer/nucmer \
+  -c 65 -l 65 --maxmatch -p 02_quality_quast_out/contigs_reports/nucmer_output/WGS_assembly-contigs \
+  --emem -t 2 02_quality_quast_out/quast_corrected_input/OBMB01.fasta 02_quality_quast_out/quast_corrected_input/WGS_assembly-contigs.fasta \
+  >> 02_quality_quast_out/contigs_reports/contigs_report_WGS_assembly-contigs.stdout \
+  2>> 02_quality_quast_out/contigs_reports/contigs_report_WGS_assembly-contigs.stderr
+  /sw/bioinfo/quast/4.5.4/rackham/lib/python2.7/site-packages/quast_libs/MUMmer/delta-filter \
+  -i 95.0 -l 0 02_quality_quast_out/contigs_reports/nucmer_output/WGS_assembly-contigs.delta \
+  > 02_quality_quast_out/contigs_reports/nucmer_output/WGS_assembly-contigs.fdelta \
+  2> 02_quality_quast_out/contigs_reports/contigs_report_WGS_assembly-contigs.stderr
+  /sw/bioinfo/quast/4.5.4/rackham/lib/python2.7/site-packages/quast_libs/MUMmer/mummerplot \
+  --html --layout -p 02_quality_quast_out/contigs_reports/nucmer_output/WGS_assembly-contigs \
+  02_quality_quast_out/contigs_reports/nucmer_output/WGS_assembly-contigs.delta > \
+  02_quality_quast_out/contigs_reports/contigs_report_WGS_assembly-contigs.stdout \
+  2> 02_quality_quast_out/contigs_reports/contigs_report_WGS_assembly-contigs.stderr
+  /sw/bioinfo/quast/4.5.4/rackham/lib/python2.7/site-packages/quast_libs/gnuplot/src/gnuplot \
+  02_quality_quast_out/contigs_reports/nucmer_output/WGS_assembly-contigs.gp > /dev/null \
+  2> 02_quality_quast_out/contigs_reports/contigs_report_WGS_assembly-contigs.stderr
+  MUMmer plot saved to /domus/h1/alvaa/private/WGS/02_quality_quast_out/contigs_reports/WGS_assembly-contigs_mummerplot.html
+  /sw/bioinfo/quast/4.5.4/rackham/lib/python2.7/site-packages/quast_libs/MUMmer/show-coords \
+  02_quality_quast_out/contigs_reports/nucmer_output/WGS_assembly-contigs.delta > \
+  02_quality_quast_out/contigs_reports/nucmer_output/WGS_assembly-contigs.coords_tmp \
+  2> 02_quality_quast_out/contigs_reports/contigs_report_WGS_assembly-contigs.stderr
+  /sw/bioinfo/quast/4.5.4/rackham/lib/python2.7/site-packages/quast_libs/MUMmer/show-snps \
+  -S -T -H 02_quality_quast_out/contigs_reports/nucmer_output/WGS_assembly-contigs.delta \
+  < 02_quality_quast_out/contigs_reports/nucmer_output/WGS_assembly-contigs.coords.headless \
+  > 02_quality_quast_out/contigs_reports/nucmer_output/WGS_assembly-contigs.all_snps \
+  2> 02_quality_quast_out/contigs_reports/contigs_report_WGS_assembly-contigs.stderr
+  Analysis is finished.
+
+  Gzipping /domus/h1/alvaa/private/WGS/02_quality_quast_out/contigs_reports/nucmer_output/WGS_assembly-contigs.all_snps to reduce disk space usage...
+    saved to /domus/h1/alvaa/private/WGS/02_quality_quast_out/contigs_reports/nucmer_output/WGS_assembly-contigs.all_snps.gz
+  Creating total report...
+    saved to /domus/h1/alvaa/private/WGS/02_quality_quast_out/contigs_reports/misassemblies_report.txt, misassemblies_report.tsv, and misassemblies_report.tex
+  Transposed version of total report...
+    saved to /domus/h1/alvaa/private/WGS/02_quality_quast_out/contigs_reports/transposed_report_misassemblies.txt, transposed_report_misassemblies.tsv, and transposed_report_misassemblies.tex
+  Creating total report...
+    saved to /domus/h1/alvaa/private/WGS/02_quality_quast_out/contigs_reports/unaligned_report.txt, unaligned_report.tsv, and unaligned_report.tex
+Done.
+
+2020-03-31 13:17:51
+Running NA-NGA calculation...
+  WGS_assembly.contigs, Largest alignment = 1463673, NA50 = 1463673, NGA50 = 1463673, LA50 = 1, LGA50 = 1
+Done.
+
+2020-03-31 13:17:51
+Running Genome analyzer...
+  NOTICE: No file with genes provided. Use the -G option if you want to specify it.
+  NOTICE: No file with operons provided. Use the -O option if you want to specify it.
+  WGS_assembly.contigs
+  Analysis is finished.
+Done.
+
+NOTICE: Genes are not predicted by default. Use --gene-finding option to enable it.
+
+2020-03-31 13:17:52
+Creating large visual summaries...
+This may take a while: press Ctrl-C to skip this step..
+  1 of 1: Creating Icarus viewers...
+Done
+
+2020-03-31 13:17:52
+RESULTS:
+  Text versions of total report are saved to /domus/h1/alvaa/private/WGS/02_quality_quast_out/report.txt, report.tsv, and report.tex
+  Text versions of transposed total report are saved to /domus/h1/alvaa/private/WGS/02_quality_quast_out/transposed_report.txt, transposed_report.tsv, and transposed_report.tex
+  HTML version (interactive tables and plots) saved to /domus/h1/alvaa/private/WGS/02_quality_quast_out/report.html
+  Icarus (contig browser) is saved to /domus/h1/alvaa/private/WGS/02_quality_quast_out/icarus.html
+  Log saved to /domus/h1/alvaa/private/WGS/02_quality_quast_out/quast.log
+
+Finished: 2020-03-31 13:17:52
+Elapsed time: 0:00:10.594217
+NOTICEs: 3; WARNINGs: 1; non-fatal ERRORs: 0
+
+Thank you for using QUAST!
