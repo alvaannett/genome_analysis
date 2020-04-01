@@ -12,9 +12,11 @@ module load bioinfo-tools
 module load MUMmer/4.0.0beta2
 
 #------- RUN MUMMERPLOT -----------------------------
+# --png to produce png output 
 
 mummerplot \
  --prefix=04_quality_mummerplot_out \
- /domus/h1/alvaa/private/WGS/03_numcmer/03_align_quality_nucmer_out.delta
+ --png \
+ /domus/h1/alvaa/private/WGS/03_nucmer_out/03_align_quality_nucmer_out.delta
 
 #----------------------------------------------------
