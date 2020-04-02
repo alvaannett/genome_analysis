@@ -15,6 +15,7 @@ module load trimmomatic/0.36
 
 # -treads 
 # -trimlog name for log file 
+# -baseout name to derive the output files from 
 # forward file 
 # reverse file 
 # ILLUMINACLIP : fasta file with adapters : seed mismatches : palindrome clip threshold : simple clip threshold 
@@ -27,25 +28,27 @@ module load trimmomatic/0.36
 java -jar $TRIMMOMATIC_HOME/trimmomatic.jar PE \
  -threads 2 \
  -trimlog ERR2036629_log \
+ -baseout ERR2036629_trimmed.fastq.gz \
  /domus/h1/alvaa/private/data/RNA_raw_data/ERR2036629_1.fastq.gz \
  /domus/h1/alvaa/private/data/RNA_raw_data/ERR2036629_2.fastq.gz \
- ILLUMINACLIP: /domus/h1/alvaa/private/RNA/02_trimmomatic/TruSeq3-PE.fa :2:30:10 \
- LEADING:10 \
- TRAILING:10 \
- SLIDINGWINDOW:5:20 \
- MINLEN:50  
+ ILLUMINACLIP : /domus/h1/alvaa/private/RNA/02_trimmomatic/TruSeq3-PE.fa : 2 : 30 : 10 \
+ LEADING : 10 \
+ TRAILING : 10 \
+ SLIDINGWINDOW : 5 : 20 \
+ MINLEN : 100  
   
 #Run for bioleaching sample 
 java -jar $TRIMMOMATIC_HOME/trimmomatic.jar PE \
  -threads 2 \
  -trimlog ERR2117290_log \
+ -baseout ERR2117290_trimmrs.fastq.gz \
  /domus/h1/alvaa/private/data/RNA_raw_data/ERR2117290_1.fastq.gz \
  /domus/h1/alvaa/private/data/RNA_raw_data/ERR2117290_2.fastq.gz \
- ILLUMINACLIP: /domus/h1/alvaa/private/RNA/02_trimmomatic/TruSeq3-PE.fa :2:30:10 \
- LEADING:10 \
- TRAILING:10 \
- SLIDINGWINDOW:5:20 \
- MINLEN:50  
+ ILLUMINACLIP : /domus/h1/alvaa/private/RNA/02_trimmomatic/TruSeq3-PE.fa : 2 : 30 : 10 \
+ LEADING : 10 \
+ TRAILING : 10 \
+ SLIDINGWINDOW : 5 : 20 \
+ MINLEN : 100 
 
 #-------------------------------------------------------------
 
