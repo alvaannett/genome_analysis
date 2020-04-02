@@ -10,15 +10,7 @@
 #Load modules
 module load bioinfo-tools
 module load quast/4.5.4
-module load ABINIT/8.10.3
-module load CDO/1.9.5
-module load GOTM/5.3-221-gac7ec88d
-module load NCO/4.8.1
-module load NCO/4.9.2
-module load Rosetta/3.7
-module load deal.II/9.1.1-gcc
-module load deal.II/9.1.1-intel
-module load matplotlib/3.0.3-foss-2019a-Python-3.7.2
+
 
 #------- RUN QUAST --------------------------------
 # -o dir for output 

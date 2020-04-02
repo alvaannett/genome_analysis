@@ -1,15 +1,15 @@
 
 #------- INSTALL -----------------------------
 
-#install.packages(c("devtools", "ggplot2"))
+install.packages(c("devtools", "ggplot2"))
 
 library(devtools)
-install_github("timflutre/rutilstimflutre")
+install_github("timflutre/rutilstimflutre", force = TRUE)
 
-#if (!requireNamespace("BiocManager", quietly = TRUE))
-#  install.packages("BiocManager")
+if (!requireNamespace("BiocManager", quietly = TRUE))
+  install.packages("BiocManager")
 
-#BiocManager::install(c("ggbio", "GenomicRanges"))
+BiocManager::install(c("ggbio", "GenomicRanges"))
 
 #----------- LIB -------------------------------------
 library(rutilstimflutre)
@@ -58,8 +58,8 @@ circular_plot_w_ref <- function(reference_GRange, NUCmer_coords){
            aes(color = "gray70", fill = "gray70")) +        # Ideogram of ref genome
     circle(reference_GRange, geom = "scale", 
            scale.type = "M", size = 1.5) +                  # Scale from seqlen of ref genome
-    # circle(reference_GRange, geom = "text", 
-    #       aes(label = seqnames), size = 2) +              # Uncomment for sequence label
+     circle(reference_GRange, geom = "text", 
+           aes(label = seqnames), size = 2) +              # Uncomment for sequence label
     scale_color_manual(name = "Sequence Origin", 
                        labels = c("Reference", "Query"), 
                        values = c("gray70", "steelblue")) +
@@ -70,24 +70,20 @@ circular_plot_w_ref <- function(reference_GRange, NUCmer_coords){
   return(p)
 }
 
-load_and_plot_nucmer_w_ref <- function(NUCmer_coords_file, ref_faidx_file, perc.id) {
-  # NUCmer_coords_file: string for file path of NUCmer output produced by show coords 
-  # ref_faidx_file: reference sequence GRanges obj
-  # perc.id: percent id cutoff to show on plot
-  
-  NUCmer_coords <- load_coords(NUCmer_coords_file, perc.id = perc.id)   # Make GRanges obj of nucmer output file
-  referenceGR <- faidx_to_GRanges(faidx_file = ref_faidx_file)
-  plot <- circular_plot_w_ref(reference_GRange = referenceGR, NUCmer_coords = NUCmer_coords)
-  return(plot)
-}
-
 #----------------------------------------------------------------------------------------------
 
-coord <- read.delim(,
-                    header = TRUE, 
-                    row.names = NULL)
+#File paths to nucmer output from show-cords and .fai file of refrnece genome. 
+NUCmer_coords_file = "C:\\Users\\alva\\Desktop\\genome_analysis\\data\\WGS_data\\03_nucmer\\03_align_quality_nucmer_out.coords.txt" 
+ref_faidx_file = "C:\\Users\\alva\\Desktop\\genome_analysis\\data\\WGS_data\\03_nucmer\\OBMB01.fasta.fai"
+perc.id = 80
 
-load_and_plot_nucmer_w_ref(NUCmer_coords_file = "C:\\Users\\alva\\Desktop\\genome_analysis\\data\\WGS_data\\03_nucmer\\03_align_quality_nucmer_out.coords.txt", 
-                           ref_faidx_file = "C:\\Users\\alva\\Desktop\\genome_analysis\\data\\WGS_data\\03_nucmer\\OBMB01.fasta.fai", 
-                           perc.id = 87)
+#read data 
+NUCmer_coords <- load_coords(NUCmer_coords_file, perc.id = perc.id)   # Make GRanges obj of nucmer output file
+referenceGR <- faidx_to_GRanges(faidx_file = ref_faidx_file)
 
+#plot 
+png("C:\\Users\\alva\\Desktop\\genome_analysis\\data\\WGS_data\\03_nucmer\\alignemnt.png")
+
+circular_plot_w_ref(reference_GRange = referenceGR, NUCmer_coords = NUCmer_coords)
+
+dev.off()
