@@ -10,6 +10,7 @@
 #Load modules
 module load bioinfo-tools
 module load canu/1.8
+module load emboss/6.6.0
 
 #-------- RUN CANU ---------------------------------
 
@@ -26,4 +27,6 @@ canu \
  stopOnReadQuality=false \
  -pacbio-raw /domus/h1/alvaa/private/data/DNA_raw_data/ERR*.fastq.gz
 
+#infoseq to tsv file 
+infoseq WGS_assembly.contigs.fasta > info_contigs.tsv
 #--------------------------------------------------

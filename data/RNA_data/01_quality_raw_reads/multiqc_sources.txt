@@ -1,0 +1,5 @@
+Module	Section	Sample Name	Source
+FastQC	all_sections	ERR2036629_1	/domus/h1/alvaa/private/RNA/01_quality_raw_reads/ERR2036629_1_fastqc.zip
+FastQC	all_sections	ERR2036629_2	/domus/h1/alvaa/private/RNA/01_quality_raw_reads/ERR2036629_2_fastqc.zip
+FastQC	all_sections	ERR2117290_1	/domus/h1/alvaa/private/RNA/01_quality_raw_reads/ERR2117290_1_fastqc.zip
+FastQC	all_sections	ERR2117290_2	/domus/h1/alvaa/private/RNA/01_quality_raw_reads/ERR2117290_2_fastqc.zip

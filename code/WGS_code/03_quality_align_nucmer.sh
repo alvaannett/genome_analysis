@@ -35,6 +35,6 @@ show-coords -r - c  -l -T \
  03_align_quality_nucmer_out.delta > 03_align_quality_nucmer_out.coords.txt 
 
 #create index fasta file from refrence genome for plotting 
-samtools faidx /domus/h1/alvaa/private/data/reference/OBMB01.fasta > OBMB01.fasta.fai
+samtools faidx /domus/h1/alvaa/private/data/reference/OBMB01.fasta 
 
 #----------------------------------------------------------
