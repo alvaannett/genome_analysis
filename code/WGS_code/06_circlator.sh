@@ -17,6 +17,8 @@ module load MUMmer/4.0.0beta2
 module load canu/1.8
 module load python/3.7.2
 
+# extract long contig from .contigs.fasta file from canu output and use this as input file
+
 #----------- RUN CIRCLATOR ----------------------------------------------
 # all : run all steps in one pipline 
 # -- assembler use canu to reassembly contig ends
@@ -30,8 +32,8 @@ circlator all \
  --assembler canu \
  --threads 2 \
  --verbose \
- /domus/h1/alvaa/private/WGS/01_assembly_out/WGS_assembly.contigs.fasta \
- /domus/h1/alvaa/private/WGS/01_assembly_out/WGS_assembly.correctedReads.fasta.gz \
+ /domus/h1/alvaa/private/WGS/01_assembly_out/tig00004064.fasta \
+ /domus/h1/alvaa/private/WGS/01_assembly_out/WGS_assembly.trimmedReads.fasta.gz \
  06_circlator_out  
 
 #-----------------------------------------------------------------------
