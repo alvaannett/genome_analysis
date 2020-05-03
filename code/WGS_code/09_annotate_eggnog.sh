@@ -12,16 +12,19 @@ module load bioinfo-tools
 module load eggNOG-mapper/1.0.3
 
 #----------- RUN EGGNOG ----------------------------------
-
-#download database 
-#/sw/bioinfo/eggNOG-mapper/1.0.3/rackham/download_eggnog_data.py
+# Use the predicted genes from prodigal (prokka).
+# .ffn file from prokka output contains nucleotide seq of
+# all genomic features 
 
 # input file 
-# output file names 
-# algorithm 
-# --data_dir 
+# -i output file names 
+# -m algorithm 
+# -d databse 
+# --output_dir 
+# --output generate filenames 
+# --data_dir database 
 /sw/bioinfo/eggNOG-mapper/1.0.3/rackham/emapper.py \
- -i /domus/h1/alvaa/private/WGS/01_assembly_out/tig00004064.fasta \
+ -i /domus/h1/alvaa/private/WGS/08_prokka_annotation_out/prokka_annotation.ffn \
  -m hmmer \
  -d bact \
  --output_dir 09_eggnog_annotate_out \

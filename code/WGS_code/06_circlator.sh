@@ -18,6 +18,7 @@ module load canu/1.8
 module load python/3.7.2
 
 # extract long contig from .contigs.fasta file from canu output and use this as input file
+# perl -ne 'if(/^>(\S+)/){$c=grep{/^$1$/}qw(tig00004064)}print if $c' WGS_assembly.contigs.fasta > tig00004064.fasta
 
 #----------- RUN CIRCLATOR ----------------------------------------------
 # all : run all steps in one pipline 
