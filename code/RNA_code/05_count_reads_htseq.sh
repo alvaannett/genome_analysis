@@ -29,6 +29,7 @@ do
 # -o sam record file 
 # -t type of feature 
 # -i ID instead of gene_id in GFF file 
+# -s reverse (illumina truseq stranded is dUTP based method)
 # alignemnt files from bwa 
 # gff_file from anotated genome 
  htseq-count \
@@ -36,9 +37,10 @@ do
     -r pos \
     -t CDS \
     -i ID \
+    -s reverse \
     $file \
     /domus/h1/alvaa/private/WGS/08_prokka_annotation_out/prokka_annotation.gff \
-    > $f.txt
+    > $f.reverse.txt
 
  echo "done" $f
 done
