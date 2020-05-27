@@ -73,7 +73,37 @@ combined = read.csv("C:\\Users\\alva\\Desktop\\genome_analysis\\data\\WGS_data\\
 
 #Number of hypothetical proteins from prokka 
 nrow(combined[combined$product_prokka == "hypothetical protein",])
-nrow(combined[is.na(combined$function_eggnog),])
 
-nrow(combined[!is.na(combined$name_eggnog),])
+#Number of genes with names 
 nrow(combined[!is.na(combined$name_prokka),])
+nrow(combined[!is.na(combined$name_eggnog),])
+
+#Number of genes with product/function eggnog 
+nrow(combined[!is.na(combined$function_eggnog),])
+nrow(combined[!is.na(combined$kegg_ko),])
+
+#change names to char 
+combined$name_eggnog = as.character(combined$name_eggnog)
+combined$name_prokka = as.character(combined$name_prokka)
+
+#consensus between eggnog and prokka 
+con = array("", nrow(combined))
+for(i in 1:nrow(combined)){
+  con[i] = str_match(combined[i,]$name_eggnog, combined[i,]$name_prokka)
+  if(is.na(con[i])){
+    con[i] = str_match(combined[i,]$name_prokka, combined[i,]$name_eggnog)
+  }
+}
+
+#Number of genes in with same predicted names from both softawares  
+length(con[!is.na(con)])
+
+#genes with names from either software 
+no_name = 0
+for(i in 1:nrow(combined)){
+  if(is.na(combined$name_eggnog[i]) && is.na(combined$name_prokka[i])){
+    no_name = no_name + 1
+  }
+}
+
+
